@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@keyframes navlink{
+    0%{ width: 0 }
+    100%{ width: 100% }
+}
+
+.navbar{
+    display: flex;
+    background: white;
+    box-shadow: 0 3px 6px rgba(230, 85, 85, 0.1);
+    border-bottom: 1px solid rgba(181, 71, 71, 0.1);
+}
+
+a{
+    color: black;
+    font-style: normal;
+    text-decoration: none;
+}
+
+.top{
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex: 3;
+}
+
+.navbar .right{
+    flex: 4;
+    display: flex;
+    justify-content: space-around;
+}
+
+.company-name{
+    font-family: Inter;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 30px;
+    font-size: 30px;
+}
+
+.navbar ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.navbar ul h1{
+    font-family: Inter;
+    color: black;
+    padding: 10px;
+    /* border-bottom: 3px solid red; */
+    /* transition: all 1s ease-out; */
+}
+
+.navbar ul h1::after{
+    display: block;
+    margin: auto;
+    content: '';
+    background: none;
+    height: 3px;
+    width: 0;
+    transition: width .5s ease, background-color .5s ease;
+}
+
+.navbar ul h1:hover::after{
+    width: 100%;
+    background: red;
+}
+
+.navbar ul h1:hover{
+    color: red;
+}
