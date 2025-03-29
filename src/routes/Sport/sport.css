@@ -1,0 +1,19 @@
+.large-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .large-container {
+    flex: 1;
+  }
+  
+  .slick-prev:before,
+  .slick-next:before {
+      color: black !important;
+  }
+  
+  .news .normal-section {
+      width: 80%;
+      margin: auto;
+  }

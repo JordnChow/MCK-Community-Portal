@@ -11,12 +11,18 @@ import Sport from './routes/Sport/Sport.jsx'
 import Canteen from './routes/Canteen/Canteen.jsx'
 import Achievements from './routes/Achievements/Achievements.jsx'
 import Admin from './routes/Admin/Admin.jsx';
+import Homepage from './routes/Homepage/Homepage.jsx';
+import Article from './routes/Article/Article.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App/>,
     children: [
+      {
+        path: "/",
+        element: <Homepage/>
+      },
       {
         path: "/News",
         element: <News/>
@@ -36,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/Admin",
         element: <Admin/>
+      },
+      {
+        path: "/Article/:id",
+        element: <Article/>
       }
     ]
   },

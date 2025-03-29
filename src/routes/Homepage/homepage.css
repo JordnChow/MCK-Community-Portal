@@ -1,0 +1,34 @@
+.homepage {
+    height: 90%;
+    font-family: "Poppins", "Inter";
+}
+
+.background {
+    background-image: url("../../assets/images.jpg");
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.Summary_Container {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50vh;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+}
+
+th,
+td {
+    padding: 40px;
+}
+
+td{
+    width: 50%;
+
+}

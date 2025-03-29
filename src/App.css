@@ -3,8 +3,5 @@
 }
 .app {
     background: 0;
-}
-
-.sidebar {
-    width: 40%;
+    height: 100%
 }

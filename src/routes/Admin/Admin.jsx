@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import { createClient } from '@supabase/supabase-js';
 import { Large, Normal } from "../../modules/News-Containers/containers";
 import './Admin.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY);
 
@@ -9,18 +12,41 @@ export default function Admin() {
     const [signedIn, setSignedIn] = useState(false);
     const [action, setAction] = useState(null);
     const [formData, setFormData] = useState({
-        info: '',
-        image: '',
-        heading: '',
-        details: '',
-        type: 'Normal'
+        info: 'It utilizes a lightweight yet powerful sequentially-turbocharged rotary engine, making a strong 255 horsepower from just 1.3 litres. ',
+        image: 'src\\assets\\images.jpg',
+        heading: 'The RX-7 is probably the best car in the world',
+        details: '3/03/2025 By Jordan Chow',
+        type: 'Normal',
+        location: "News"
     });
+
+    function SlideShow() {
+        var settings = {
+            dots: true,
+            infinite: true,
+            speed: 1500,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+        };
+        return (
+            <Slider {...settings}>
+                {Array.from({ length: 3 }).map((_, i) => (
+                    <Normal
+                        key={i}
+                        heading={formData.heading}
+                        details={formData.details}
+                        info={formData.info}
+                        image={formData.image}
+                    />
+                ))}
+            </Slider>
+        );
+    }
 
     async function logIn(event) {
         event.preventDefault();
         let email = event.target.email.value;
         let password = event.target.password.value;
-        console.log(email + password);
         const { data, error } = await supabase.auth.signInWithPassword({
             email: email,
             password: password
@@ -35,7 +61,6 @@ export default function Admin() {
     function handleAction(event) {
         event.preventDefault();
         setAction(event.target.getAttribute('name'));
-        console.log(event.target.getAttribute('name'));
     }
 
     function handleCreate(event) {
@@ -48,16 +73,22 @@ export default function Admin() {
 
     async function handleCreateNew(event) {
         event.preventDefault();
-        console.log(formData)
+        const location = formData.location;
+        delete formData.location
         const { error: insertError } = await supabase
-            .from('News')
+            .from(location)
             .insert(formData);
 
         if (insertError) {
             console.error('Error inserting new record:', insertError);
+            alert("Error occured please try again")
         } else {
             alert('Article created successfully');
         }
+        setFormData({
+            ...formData,
+            location: location
+        })
     }
 
     function Edit() {
@@ -99,6 +130,12 @@ export default function Admin() {
                                         <option value="Normal">Normal</option>
                                         <option value="Large">Large</option>
                                     </select>
+                                    <label>Location:</label>
+                                    <select name="location" value={formData.location} onChange={handleCreate} className="form-select">
+                                        <option value="Sport">Sport</option>
+                                        <option value="News">News</option>
+                                        <option value="Achievements">Achievements</option>
+                                    </select>
                                     <button type="submit">Create Article</button>
                                 </form>
                             </div>
@@ -106,12 +143,13 @@ export default function Admin() {
                                 {
                                     formData.type == "Normal" ?
                                         <div className="normal">
-                                            <Normal
+                                            {/* <Normal
                                                 heading={formData.heading}
                                                 details={formData.details}
                                                 info={formData.info}
                                                 image={formData.image}
-                                            />
+                                            /> */}
+                                            <SlideShow />
                                         </div> :
                                         <div className="large">
                                             <Large

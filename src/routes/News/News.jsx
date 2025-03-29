@@ -5,11 +5,15 @@ import './news.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { useNavigate } from "react-router-dom";
 
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY);
 
 export default function News() {
     const [news, setNews] = useState([]);
+    const largeNews = news.filter(item => item.type == "Large")
+    const normalNews = news.filter(item => item.type == "Normal")
+    const navigate = useNavigate();
 
     function SlideShow() {
         var settings = {
@@ -21,8 +25,8 @@ export default function News() {
         };
         return (
             <Slider {...settings}>
-                {news.map((item) => (
-                    <Normal {...item} />
+                {normalNews.map((item) => (
+                    <Normal {...item} key={item.id}/>
                 ))}
             </Slider>
         );
@@ -42,18 +46,22 @@ export default function News() {
         };
 
         fetchNews();
+        
     }, []);
-    
+    console.log(news)
     return (
         <section className="news">
-            <div className="large">
+            
+            <div className="large-section">
                 {
-                    news.map(item => (
-                        <Large key={item.id} {...item} />
+                    largeNews.map(item => (
+                        <div className="large-container" key={item.id} onClick={() => navigate(`/Article/${item.id}`)}>
+                            <Large  {...item} />
+                        </div>
                     ))
                 }
             </div>
-            <div className="normal">
+            <div className="normal-section">
                 <SlideShow />
             </div>
         </section>
