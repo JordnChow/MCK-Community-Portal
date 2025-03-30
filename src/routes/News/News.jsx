@@ -55,7 +55,7 @@ export default function News() {
             <div className="large-section">
                 {
                     largeNews.map(item => (
-                        <div className="large-container" key={item.id} onClick={() => navigate(`/Article/${item.id}`)}>
+                        <div className="large-container" key={item.id} onClick={() => navigate(`/Article/${item.id}`, { state: item })}>
                             <Large  {...item} />
                         </div>
                     ))

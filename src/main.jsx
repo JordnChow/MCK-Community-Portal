@@ -46,6 +46,9 @@ const router = createBrowserRouter([
       {
         path: "/Article/:id",
         element: <Article/>
+      },
+      {
+        basename: "/MCK-Community-Portal", 
       }
     ]
   },
