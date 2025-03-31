@@ -25,11 +25,12 @@ export default function Article() {
         fetchArticle()
     },[])
     console.log(article.image)
+    console.log("MCK-Community-Portal\\#\\" + article.image)
     return (
         <section className="article">
             <h1 className="article-heading">{article.heading}</h1>
             <p className="article-details">{article.details}</p>
-            <img className="article-image" src={"../../"+ article.image} alt={article.heading} />
+            <img className="article-image" src={article.image} alt={article.heading} />
             <p className="article-info">{article.info}</p>
         </section>
     );

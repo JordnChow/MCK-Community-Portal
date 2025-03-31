@@ -18,6 +18,10 @@ a{
     text-decoration: none;
 }
 
+.active-link{
+    color: red !important;
+}
+
 .top{
     padding: 20px;
     display: flex;
@@ -51,10 +55,7 @@ a{
 
 .navbar ul h1{
     font-family: Inter;
-    color: black;
     padding: 10px;
-    /* border-bottom: 3px solid red; */
-    /* transition: all 1s ease-out; */
 }
 
 .navbar ul h1::after{

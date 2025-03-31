@@ -9,6 +9,14 @@ Expected, props.:
 - image
 */
 
+function truncateText(text, wordLimit) {
+    const words = text.split(" ");
+    if (words.length > wordLimit) {
+        return words.slice(0, wordLimit).join(" ") + ". See more...";
+    }
+    return text;
+}
+
 function Large(props) {
     return (
         <section className="large">
@@ -19,7 +27,7 @@ function Large(props) {
                 <div className="right">
                     <h2>{props.heading}</h2>
                     <span>{props.details}</span>
-                    <p>{props.info}</p>
+                    <p>{truncateText(props.info, 25)}</p>
                 </div>
             </div>
         </section>
@@ -36,7 +44,7 @@ function Normal(props) {
                 <div className="bottom">
                     <h2>{props.heading }</h2>
                     <span>{props.details}</span>
-                    <p>{props.info}</p>
+                    <p>{truncateText(props.info, 25)}</p>
                 </div>
             </div>
         </section>

@@ -112,30 +112,42 @@ export default function Admin() {
                             <div className="form-wrapper">
                                 <form className="createNew-form" onSubmit={handleCreateNew} autoComplete="off">
                                     <div className="form-row">
-                                        <div className="form-group">
-                                            <label>Heading:</label>
-                                            <input type="text" name="heading" value={formData.heading} onChange={handleCreate} placeholder="Heading" className="form-input" />
+                                        <div className="form-left">
+                                            <div className="form-group">
+                                                <label>Heading:</label>
+                                                <input type="text" name="heading" value={formData.heading} onChange={handleCreate} placeholder="Heading" className="form-input" />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Details:</label>
+                                                <input type="text" name="details" value={formData.details} onChange={handleCreate} placeholder="Details" className="form-input" />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Image:</label>
+                                                <input type="text" name="image" value={formData.image} onChange={handleCreate} placeholder="Image link address" className="form-input" />
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Type:</label>
+                                                <select name="type" value={formData.type} onChange={handleCreate} className="form-select">
+                                                    <option value="Normal">Normal</option>
+                                                    <option value="Large">Large</option>
+                                                </select>
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Location:</label>
+                                                <select name="location" value={formData.location} onChange={handleCreate} className="form-select">
+                                                    <option value="Sport">Sport</option>
+                                                    <option value="News">News</option>
+                                                    <option value="Achievements">Achievements</option>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div className="form-group">
-                                            <label>Details:</label>
-                                            <input type="text" name="details" value={formData.details} onChange={handleCreate} placeholder="Details" className="form-input" />
+                                        <div className="form-right">
+                                            <div className="form-group">
+                                                <label>Information:</label>
+                                                <textarea name="info" value={formData.info} onChange={handleCreate} placeholder="Information on the topic" className="form-textarea" />
+                                            </div>
                                         </div>
                                     </div>
-                                    <label>Information:</label>
-                                    <textarea name="info" value={formData.info} onChange={handleCreate} placeholder="Information on the topic" className="form-textarea" /><br />
-                                    <label>Image:</label>
-                                    <input type="text" name="image" value={formData.image} onChange={handleCreate} placeholder="Image link address" className="form-input" />
-                                    <label>Type:</label>
-                                    <select name="type" value={formData.type} onChange={handleCreate} className="form-select">
-                                        <option value="Normal">Normal</option>
-                                        <option value="Large">Large</option>
-                                    </select>
-                                    <label>Location:</label>
-                                    <select name="location" value={formData.location} onChange={handleCreate} className="form-select">
-                                        <option value="Sport">Sport</option>
-                                        <option value="News">News</option>
-                                        <option value="Achievements">Achievements</option>
-                                    </select>
                                     <button type="submit">Create Article</button>
                                 </form>
                             </div>
@@ -143,12 +155,6 @@ export default function Admin() {
                                 {
                                     formData.type == "Normal" ?
                                         <div className="normal">
-                                            {/* <Normal
-                                                heading={formData.heading}
-                                                details={formData.details}
-                                                info={formData.info}
-                                                image={formData.image}
-                                            /> */}
                                             <SlideShow />
                                         </div> :
                                         <div className="large">

@@ -13,13 +13,48 @@ function NavBar() {
                     <img src={logo} alt="Marist College Kogarah Crest" height="80px" />
                 </NavLink>
                 <h1 className="company-name">Marist College Kogarah Community Portal</h1>
-
             </div>
             <div className="right">
-                <ul id=""><NavLink to="/News"><h1>News</h1></NavLink></ul>
-                <ul id=""><NavLink to="/Sport"><h1>Sport</h1></NavLink></ul>
-                <ul id=""><NavLink to="/Canteen"><h1>Canteen</h1></NavLink></ul>
-                <ul id=""><NavLink to="/Achievements"><h1>Achievements</h1></NavLink></ul>
+                <ul>
+                    <NavLink 
+                        to="/News" 
+                        className={({ isActive }) =>
+                            isActive ? "active-link" : ""
+                        }
+                    >
+                        <h1>News</h1>
+                    </NavLink>
+                </ul>
+                <ul>
+                    <NavLink 
+                        to="/Sport" 
+                        className={({ isActive }) =>
+                            isActive ? "active-link" : ""
+                        }
+                    >
+                        <h1>Sport</h1>
+                    </NavLink>
+                </ul>
+                <ul>
+                    <NavLink 
+                        to="/Canteen" 
+                        className={({ isActive }) =>
+                            isActive ? "active-link" : ""
+                        }
+                    >
+                        <h1>Canteen</h1>
+                    </NavLink>
+                </ul>
+                <ul>
+                    <NavLink 
+                        to="/Achievements" 
+                        className={({ isActive }) =>
+                            isActive ? "active-link" : ""
+                        }
+                    >
+                        <h1>Achievements</h1>
+                    </NavLink>
+                </ul>
             </div>
         </section>
     )

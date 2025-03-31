@@ -24,9 +24,12 @@ export default function News() {
             slidesToScroll: 3,
         };
         return (
-            <Slider {...settings}>
+
+            <Slider {...settings} >
                 {normalNews.map((item) => (
-                    <Normal {...item} key={item.id}/>
+                    <div onClick={() => navigate(`/Article/${item.id}`, { state: item })}>
+                        <Normal {...item} key={item.id} />
+                    </div>
                 ))}
             </Slider>
         );
@@ -46,12 +49,12 @@ export default function News() {
         };
 
         fetchNews();
-        
+
     }, []);
     console.log(news)
     return (
         <section className="news">
-            
+
             <div className="large-section">
                 {
                     largeNews.map(item => (

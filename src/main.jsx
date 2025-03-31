@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider,
 } from "react-router-dom";
 import './index.css'
@@ -14,7 +14,7 @@ import Admin from './routes/Admin/Admin.jsx';
 import Homepage from './routes/Homepage/Homepage.jsx';
 import Article from './routes/Article/Article.jsx';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <App/>,
@@ -47,9 +47,6 @@ const router = createBrowserRouter([
         path: "/Article/:id",
         element: <Article/>
       },
-      {
-        basename: "/MCK-Community-Portal", 
-      }
     ]
   },
 ]);
