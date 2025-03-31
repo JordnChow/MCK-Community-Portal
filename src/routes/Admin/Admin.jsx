@@ -174,11 +174,16 @@ export default function Admin() {
                     )}
                 </section>
             ) : (
-                <form onSubmit={logIn}>
-                    <input type="text" name="email" placeholder="email" />
-                    <input type="password" name="password" placeholder="password" />
-                    <button type="submit">Submit</button>
-                </form>
+                <div className="login-form">
+                    <div className="login-container">
+                        <h1>Admin sign in page</h1>
+                        <form onSubmit={logIn}>
+                            <input type="text" name="email" placeholder="email" />
+                            <input type="password" name="password" placeholder="password" />
+                            <button type="submit">Submit</button>
+                        </form>
+                    </div>
+                </div>
             )}
         </section>
     );
