@@ -59,9 +59,13 @@ export default function Sport() {
                     ))
                 }
             </div>
-            <div className="normal-section">
-                <SlideShow />
-            </div>
+            {
+                normalNews.length > 1 ? (
+                    <div className="normal-section">
+                        <SlideShow />
+                    </div>
+                ) : <></>
+            }
         </section>
     )
 }

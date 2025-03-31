@@ -10,6 +10,11 @@
     background: white;
     box-shadow: 0 3px 6px rgba(230, 85, 85, 0.1);
     border-bottom: 1px solid rgba(181, 71, 71, 0.1);
+    height: 13vh;
+}
+
+.navbar img{
+    height: 10vh;
 }
 
 a{
@@ -23,7 +28,7 @@ a{
 }
 
 .top{
-    padding: 20px;
+    padding: 2vh;
     display: flex;
     flex-direction: row;
     flex: 3;
