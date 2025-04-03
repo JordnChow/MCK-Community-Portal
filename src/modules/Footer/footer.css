@@ -1,0 +1,33 @@
+*{
+    
+}
+
+.footer{
+    padding: 100px;
+    background: rgb(255, 110, 110);
+    display: flex;
+    padding-right: 20%;
+    color: white;
+}
+
+.footer .image{
+    flex: 1
+}
+.footer .accessibility{
+    flex: 1
+}
+.footer .copyright{
+    flex: 1
+}
+
+.footer a{
+    color: white;
+}
+
+.footer a:hover{
+    color: red;
+}
+
+.footer h4{
+    margin: 10px 0 ;
+}

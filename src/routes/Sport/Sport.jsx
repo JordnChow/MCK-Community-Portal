@@ -44,7 +44,6 @@ export default function Sport() {
                 setNews(data);
             }
         };
-
         fetchNews();
     }, []);
     

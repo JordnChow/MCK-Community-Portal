@@ -124,8 +124,71 @@
     vertical-align: top;
 }
 
-@media (max-width: 768px) {
-    .information td {
-        width: 100%; /* Make items full-width on smaller screens */
-    }
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 50%;
+    box-shadow: 0 4px 8px rgb(228, 92, 92);
+}
+
+.popup-content textarea {
+    width: 100%;
+    height: 80px;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.popup-content .rating {
+    margin: 10px 0;
+}
+
+.popup-content .rating button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.popup-content .rating button.selected {
+    color: gold;
+}
+
+.popup-content button {
+    margin: 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-content button:hover {
+    background: #f0f0f0;
+}
+
+.popup-content .Submit{
+    background:rgb(228, 92, 92);
+    color: white;
+}
+
+.popup-content .Submit:hover{
+    background:rgb(255, 0, 0);
+    box-shadow: 3px 3px 0 rgb(228, 92, 92);
 }

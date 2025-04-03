@@ -24,7 +24,7 @@ a{
 }
 
 .active-link{
-    color: red !important;
+    color: rgb(228, 92, 92) !important;
 }
 
 .top{
@@ -75,9 +75,9 @@ a{
 
 .navbar ul h1:hover::after{
     width: 100%;
-    background: red;
+    background: rgb(228, 92, 92);
 }
 
 .navbar ul h1:hover{
-    color: red;
+    color: rgb(228, 92, 92);
 }

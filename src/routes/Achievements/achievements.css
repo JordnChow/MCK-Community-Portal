@@ -29,7 +29,7 @@
   
   @media (max-width: 768px) {
     .large .container {
-        flex: 1 1 100%; /* Makes them full-width on smaller screens */
+        flex: 1 1 100%; 
         max-width: 100%;
     }
   }

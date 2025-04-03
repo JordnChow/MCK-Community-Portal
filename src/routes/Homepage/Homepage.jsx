@@ -1,12 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./homepage.css";
 import NewsImage from "../../assets/news.jpg";
 import SportImage from "../../assets/Cocurricular-Sport.jpg";
 import CanteenImage from "../../assets/canteeen.jpg"
 import achievementsImage from "../../assets/achievements.jpg"
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY);
+
 
 export default function Homepage() {
-    const vh = screen.availHeight / 100
+    const [showPopup, setShowPopup] = useState(false);
+    const [feedback, setFeedback] = useState("");
+    const [rating, setRating] = useState(0);
+
+    useEffect(() => {
+        const popupShown = localStorage.getItem("popupShown");
+        if (!popupShown) {
+            const timer = setTimeout(() => {
+                setShowPopup(true);
+                localStorage.setItem("popupShown", "true");
+            }, 10000);
+            return () => clearTimeout(timer);
+        }
+    }, []);
+
+    async function handleSubmit(){
+        const { error: insertError } = await supabase
+            .from("feedback")
+            .insert({"feedback": feedback, "rating":rating});
+        insertError? alert(insertError): null
+        setShowPopup(false);
+    };
+
+    const handleClose = () => setShowPopup(false);
+
+    const vh = screen.availHeight / 100;
     return (
         <div className="homepage">
             <div className="background">
@@ -54,6 +83,32 @@ export default function Homepage() {
                     </tbody>
                 </table>
             </div>
+            {showPopup && (
+                <div className="popup">
+                    <div className="popup-content">
+                        <h2>We value your feedback!</h2>
+                        <textarea
+                            placeholder="Leave your feedback here..."
+                            value={feedback}
+                            onChange={(e) => setFeedback(e.target.value)}
+                        />
+                        <div className="rating">
+                            <label>Rate us:</label>
+                            {[1, 2, 3, 4, 5].map((star) => (
+                                <button
+                                    key={star}
+                                    className={rating >= star ? "selected" : ""}
+                                    onClick={() => setRating(star)}
+                                >
+                                    {star}★
+                                </button>
+                            ))}
+                        </div>
+                        <button onClick={handleSubmit} className="Submit">Submit</button>
+                        <button onClick={handleClose} className="Submit">Close</button>
+                    </div>
+                </div>
+            )}
         </div>
     )
 }

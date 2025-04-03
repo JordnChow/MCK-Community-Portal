@@ -90,88 +90,71 @@ export default function Admin() {
             location: location
         })
     }
-
-    function Edit() {
-        return (
-            <div className="edit">
-                <h1>Edit a post</h1>
-            </div>
-        );
-    }
-
     return (
         <section>
             {signedIn ? (
                 <section className="admin">
-                    <h1>Welcome to the Admin Panel</h1>
-                    <button type="submit" name="Create" onClick={handleAction}>Create a new post</button>
-                    <button type="submit" name="Edit" onClick={handleAction}>Edit a previous post</button>
-                    {action === "Create" && (
-                        <div>
-                            <h1>Create a new post</h1>
-                            <div className="form-wrapper">
-                                <form className="createNew-form" onSubmit={handleCreateNew} autoComplete="off">
-                                    <div className="form-row">
-                                        <div className="form-left">
-                                            <div className="form-group">
-                                                <label>Heading:</label>
-                                                <input type="text" name="heading" value={formData.heading} onChange={handleCreate} placeholder="Heading" className="form-input" />
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Details:</label>
-                                                <input type="text" name="details" value={formData.details} onChange={handleCreate} placeholder="Details" className="form-input" />
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Image:</label>
-                                                <input type="text" name="image" value={formData.image} onChange={handleCreate} placeholder="Image link address" className="form-input" />
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Type:</label>
-                                                <select name="type" value={formData.type} onChange={handleCreate} className="form-select">
-                                                    <option value="Normal">Normal</option>
-                                                    <option value="Large">Large</option>
-                                                </select>
-                                            </div>
-                                            <div className="form-group">
-                                                <label>Location:</label>
-                                                <select name="location" value={formData.location} onChange={handleCreate} className="form-select">
-                                                    <option value="Sport">Sport</option>
-                                                    <option value="News">News</option>
-                                                    <option value="Achievements">Achievements</option>
-                                                </select>
-                                            </div>
+                    <h1>Create a new post</h1>
+                    <div>
+                        <div className="form-wrapper">
+                            <form className="createNew-form" onSubmit={handleCreateNew} autoComplete="off">
+                                <div className="form-row">
+                                    <div className="form-left">
+                                        <div className="form-group">
+                                            <label>Heading:</label>
+                                            <input type="text" name="heading" value={formData.heading} onChange={handleCreate} placeholder="Heading" className="form-input" />
                                         </div>
-                                        <div className="form-right">
-                                            <div className="form-group">
-                                                <label>Information:</label>
-                                                <textarea name="info" value={formData.info} onChange={handleCreate} placeholder="Information on the topic" className="form-textarea" />
-                                            </div>
+                                        <div className="form-group">
+                                            <label>Details:</label>
+                                            <input type="text" name="details" value={formData.details} onChange={handleCreate} placeholder="Details" className="form-input" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Image:</label>
+                                            <input type="text" name="image" value={formData.image} onChange={handleCreate} placeholder="Image link address" className="form-input" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Type:</label>
+                                            <select name="type" value={formData.type} onChange={handleCreate} className="form-select">
+                                                <option value="Normal">Normal</option>
+                                                <option value="Large">Large</option>
+                                            </select>
+                                        </div>
+                                        <div className="form-group">
+                                            <label>Location:</label>
+                                            <select name="location" value={formData.location} onChange={handleCreate} className="form-select">
+                                                <option value="Sport">Sport</option>
+                                                <option value="News">News</option>
+                                                <option value="Achievements">Achievements</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <button type="submit">Create Article</button>
-                                </form>
-                            </div>
-                            <div className="container-large">
-                                {
-                                    formData.type == "Normal" ?
-                                        <div className="normal">
-                                            <SlideShow />
-                                        </div> :
-                                        <div className="large">
-                                            <Large
-                                                heading={formData.heading}
-                                                details={formData.details}
-                                                info={formData.info}
-                                                image={formData.image}
-                                            />
+                                    <div className="form-right">
+                                        <div className="form-group">
+                                            <label>Information:</label>
+                                            <textarea name="info" value={formData.info} onChange={handleCreate} placeholder="Information on the topic" className="form-textarea" />
                                         </div>
-                                }
-                            </div>
+                                    </div>
+                                </div>
+                                <button type="submit">Create Article</button>
+                            </form>
                         </div>
-                    )}
-                    {action === "Edit" && (
-                        <Edit />
-                    )}
+                        <div className="container-large">
+                            {
+                                formData.type == "Normal" ?
+                                    <div className="normal">
+                                        <SlideShow />
+                                    </div> :
+                                    <div className="large">
+                                        <Large
+                                            heading={formData.heading}
+                                            details={formData.details}
+                                            info={formData.info}
+                                            image={formData.image}
+                                        />
+                                    </div>
+                            }
+                        </div>
+                    </div>
                 </section>
             ) : (
                 <div className="login-form">
