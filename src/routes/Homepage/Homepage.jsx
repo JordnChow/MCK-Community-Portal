@@ -15,25 +15,35 @@ export default function Homepage() {
     const [rating, setRating] = useState(0);
 
     useEffect(() => {
-        const popupShown = localStorage.getItem("popupShown");
-        if (!popupShown) {
-            const timer = setTimeout(() => {
-                setShowPopup(true);
-                localStorage.setItem("popupShown", "true");
-            }, 10000);
-            return () => clearTimeout(timer);
+        let popupShown = localStorage.getItem("popupShown");
+        let show = localStorage.getItem("showPopup")
+        console.log(show, show=="true")
+        if(show == null){
+            localStorage.setItem("showPopup", true)
+            show = "true"
         }
-    }, []);
+        if (show == "true") {
+            if (!popupShown) {
+                popupShown = 0;
+            } else if (popupShown >= 1) {
+                setShowPopup(true);
+            }
+            localStorage.setItem("popupShown", parseInt(popupShown) + 1);
+        } 
+        }, []);
 
-    async function handleSubmit(){
+    async function handleSubmit() {
         const { error: insertError } = await supabase
             .from("feedback")
-            .insert({"feedback": feedback, "rating":rating});
-        insertError? alert(insertError): null
+            .insert({ "feedback": feedback, "rating": rating });
+        insertError ? alert(insertError) : null
         setShowPopup(false);
     };
 
-    const handleClose = () => setShowPopup(false);
+    const handleClose = () => {
+        localStorage.setItem("showPopup", false)
+        setShowPopup(false)
+    };
 
     const vh = screen.availHeight / 100;
     return (

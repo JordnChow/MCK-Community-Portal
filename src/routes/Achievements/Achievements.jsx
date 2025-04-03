@@ -5,6 +5,7 @@ import './achievements.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import Error from "../../modules/Error/Error";
 import { useNavigate } from "react-router-dom";
 
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY);
@@ -27,7 +28,7 @@ export default function News() {
 
             <Slider {...settings} >
                 {normalNews.map((item) => (
-                    <div onClick={() => navigate(`/Article/${item.id}`, { state: item })}>
+                    <div onClick={() => navigate(`/Article/${item.id}-Achievements`)}>
                         <Normal {...item} key={item.id} />
                     </div>
                 ))}
@@ -52,25 +53,29 @@ export default function News() {
 
     }, []);
     console.log(news)
-    return (
-        <section className="news">
+    if (largeNews.length < 1 & normalNews.length < 1) {
+        return <Error />
+    } else {
+        return (
+            <section className="news">
 
-            <div className="large-section">
+                <div className="large-section">
+                    {
+                        largeNews.map(item => (
+                            <div className="large-container" key={item.id} onClick={() => navigate(`/Article/${item.id}-Achievements`)}>
+                                <Large  {...item} />
+                            </div>
+                        ))
+                    }
+                </div>
                 {
-                    largeNews.map(item => (
-                        <div className="large-container" key={item.id} onClick={() => navigate(`/Article/${item.id}`, { state: item })}>
-                            <Large  {...item} />
+                    normalNews.length > 1 ? (
+                        <div className="normal-section">
+                            <SlideShow />
                         </div>
-                    ))
+                    ) : <></>
                 }
-            </div>
-            {
-                normalNews.length > 1 ? (
-                    <div className="normal-section">
-                        <SlideShow />
-                    </div>
-                ) : <></>
-            }
-        </section>
-    )
+            </section>
+        )
+    }
 }

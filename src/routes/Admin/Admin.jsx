@@ -74,22 +74,26 @@ export default function Admin() {
     async function handleCreateNew(event) {
         event.preventDefault();
         const location = formData.location;
-        delete formData.location
+        const paragraphs = formData.info.split('\n').map(p => p.trim()).filter(p => p); // Split info into paragraphs
+        const dataToInsert = { ...formData, info: paragraphs };
+        delete dataToInsert.location;
+
         const { error: insertError } = await supabase
             .from(location)
-            .insert(formData);
+            .insert(dataToInsert);
 
         if (insertError) {
             console.error('Error inserting new record:', insertError);
-            alert("Error occured please try again")
+            alert("Error occurred, please try again");
         } else {
             alert('Article created successfully');
         }
         setFormData({
             ...formData,
             location: location
-        })
+        });
     }
+
     return (
         <section>
             {signedIn ? (
@@ -148,7 +152,7 @@ export default function Admin() {
                                         <Large
                                             heading={formData.heading}
                                             details={formData.details}
-                                            info={formData.info}
+                                            info={Array.isArray(formData.info) ? formData.info : formData.info.split('\n').map(p => p.trim()).filter(p => p)} // Ensure info is an array
                                             image={formData.image}
                                         />
                                     </div>

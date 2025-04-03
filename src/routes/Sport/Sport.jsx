@@ -5,15 +5,16 @@ import './sport.css'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import Error from "../../modules/Error/Error";
+import { useNavigate } from "react-router-dom";
 
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY);
 
 export default function Sport() {
     const [news, setNews] = useState([]);
     const largeNews = news.filter(item => item.type == "Large")
-    console.log("d", largeNews)
     const normalNews = news.filter(item => item.type == "Normal")
-    console.log("e", normalNews)
+    const navigate = useNavigate()
 
     function SlideShow() {
         var settings = {
@@ -26,9 +27,12 @@ export default function Sport() {
         return (
             <Slider {...settings}>
                 {normalNews.map((item) => (
-                    <Normal {...item} key={item.id}/>
-                ))}
-            </Slider>
+                    <div onClick={() => navigate(`/Article/${item.id}-Sport`)}>
+                        <Normal {...item} key={item.id} />
+                    </div>
+                ))
+                }
+            </Slider >
         );
     }
 
@@ -46,25 +50,28 @@ export default function Sport() {
         };
         fetchNews();
     }, []);
-    
-    return (
-        <section className="news">
-            <div className="large-section">
+    if (largeNews.length < 1 & normalNews.length < 1) {
+        return <Error />
+    } else {
+        return (
+            <section className="news">
+                <div className="large-section">
+                    {
+                        largeNews.map(item => (
+                            <div className="large-container" key={item.id} onClick={() => navigate(`/Article/${item.id}-Sport`)}>
+                                <Large  {...item} />
+                            </div>
+                        ))
+                    }
+                </div>
                 {
-                    largeNews.map(item => (
-                        <div className="large-container" key={item.id}>
-                            <Large  {...item} />
+                    normalNews.length > 1 ? (
+                        <div className="normal-section">
+                            <SlideShow />
                         </div>
-                    ))
+                    ) : <></>
                 }
-            </div>
-            {
-                normalNews.length > 1 ? (
-                    <div className="normal-section">
-                        <SlideShow />
-                    </div>
-                ) : <></>
-            }
-        </section>
-    )
+            </section>
+        )
+    }
 }

@@ -1,0 +1,21 @@
+.error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    background-color: #f8d7da;
+    color: #721c24;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.error h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.error p {
+    font-size: 1.2rem;
+    margin: 0;
+}

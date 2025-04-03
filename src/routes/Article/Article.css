@@ -30,3 +30,22 @@
     font-size: 1.2rem;
     text-align: justify;
 }
+
+.article-rating {
+    margin-top: 20px;
+}
+
+.article-rating .star {
+    font-size: 24px;
+    cursor: pointer;
+    color: gray;
+    transition: color 0.3s;
+}
+
+.article-rating .star:hover {
+    color: red; /* Change to red on hover */
+}
+
+.article-rating .star.selected {
+    color: red; /* Change to red when clicked */
+}

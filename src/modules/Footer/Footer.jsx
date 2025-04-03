@@ -41,7 +41,7 @@ export default function Footer() {
             </div>
             <div className="copyright">
                 <h3>Copyrights:</h3>
-                <p>All images used are the property of Marist College Kogarah, Aaron Knight or Jordan Chow.
+                <p>All images used in the homepage are the property of Marist College Kogarah, Aaron Knight or Jordan Chow.
                     <br /><br />
                     Aaron and Jordan productions will not take responsibility for images and/or
                     intellectual property. It is the responsibility of the article writers to ensure they have the
