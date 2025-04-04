@@ -54,7 +54,10 @@ export default function News() {
     }, []);
     console.log(news)
     if (largeNews.length < 1 & normalNews.length < 1) {
-        return <Error />
+        setTimeout(() => {
+            return <Error />;
+        }, 1000);
+        return null;
     } else {
         return (
             <section className="news">

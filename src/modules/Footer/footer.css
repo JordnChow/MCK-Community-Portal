@@ -40,7 +40,7 @@ body.high-contrast {
 body.high-contrast * {
     background-color: white !important;
     color: black !important;
-    border-color: black !important; /* Ensures borders are also visible */
+    border-color: black !important;
 }
 
 body.high-contrast a {
