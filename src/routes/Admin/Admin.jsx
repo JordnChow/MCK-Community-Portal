@@ -13,7 +13,7 @@ export default function Admin() {
     const [action, setAction] = useState(null);
     const [formData, setFormData] = useState({
         info: 'It utilizes a lightweight yet powerful sequentially-turbocharged rotary engine, making a strong 255 horsepower from just 1.3 litres. ',
-        image: 'src\\assets\\images.jpg',
+        image: 'https://hips.hearstapps.com/hmg-prod/images/v12-rx7-2-1668441540.jpg?crop=0.7515555555555555xw:1xh;center,top&resize=1200:*',
         heading: 'The RX-7 is probably the best car in the world',
         details: '3/03/2025 By Jordan Chow',
         type: 'Normal',
