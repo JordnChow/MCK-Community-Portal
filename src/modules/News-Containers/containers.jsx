@@ -31,7 +31,7 @@ function Large(props) {
         <section className="large">
             <div className="container">
                 <div className="left">
-                    {props.image ? <img src={props.image} /> : <></>}
+                    {props.image ? <img src={props.image} alt={props.heading} /> : <></>}
                 </div>
                 <div className="right">
                     <h2>{props.heading}</h2>
@@ -58,7 +58,7 @@ function Normal(props) {
         <section className="normal">
             <div className="container">
                 <div className="top">
-                    {props.image ? <img src={props.image} /> : <></>}
+                    {props.image ? <img src={props.image} alt={props.heading} /> : <></>}
                 </div>
                 <div className="bottom">
                     <h2>{props.heading}</h2>

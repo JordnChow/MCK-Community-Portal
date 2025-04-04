@@ -41,6 +41,11 @@ export default function Article() {
             <h1 className="article-heading">{article.heading}</h1>
             <p className="article-details">{article.details}</p>
             <img className="article-image" src={article.image} alt={article.heading} />
+            <br/><br/>
+            <span>
+                Image Link: {article.image}
+            </span>
+            <br/><br/>
             {Array.isArray(article.info) ? (
                 article.info.map((paragraph, index) => (
                     <p key={index} className="article-info">{paragraph}<br/><br/></p>

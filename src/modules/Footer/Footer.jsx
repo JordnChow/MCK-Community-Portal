@@ -1,32 +1,19 @@
-import React from "react";
-import "./footer.css"
+import React, { useState } from "react";
+import "./footer.css";
+import crestImage from "../../assets/Marist_College_Kogarah_crest.png"; // Import the image
 
 export default function Footer() {
-
-    const contrast = () => {
-        const stylesheet = document.styleSheets[1];
-        console.log(stylesheet.cssRules)
-        stylesheet.cssRules[0].style.setProperty("color", "black", "important");
-        stylesheet.cssRules[0].style.setProperty("background-color", "white", "important");
-    }
-    let isHighContrast = false;
+    const [isHighContrast, setIsHighContrast] = useState(false);
 
     const toggleContrast = () => {
-        const stylesheet = document.styleSheets[1];
-        isHighContrast = !isHighContrast;
-
-        if (isHighContrast) {
-            stylesheet.cssRules[0].style.setProperty("color", "black", "important");
-            stylesheet.cssRules[0].style.setProperty("background-color", "white", "important");
-        } else {
-            stylesheet.cssRules[0].style.removeProperty("color");
-            stylesheet.cssRules[0].style.removeProperty("background-color");
-        }
+        setIsHighContrast(!isHighContrast);
+        document.body.classList.toggle("high-contrast", !isHighContrast);
     };
+
     return (
-        <section className="footer">
+        <section className={`footer ${isHighContrast ? "high-contrast" : ""}`}>
             <div className="image">
-                <img src="src\assets\Marist_College_Kogarah_crest.png" height="200px"></img>
+                <img src={crestImage} height="200px" alt="Marist College Kogarah Crest"></img>
             </div>
             <div className="accessibility">
                 <h3>Accessibility Features:</h3>
@@ -48,5 +35,5 @@ export default function Footer() {
                     appropriate permissions. </p>
             </div>
         </section>
-    )
+    );
 }

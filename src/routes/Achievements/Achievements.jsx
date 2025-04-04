@@ -69,7 +69,7 @@ export default function News() {
                     }
                 </div>
                 {
-                    normalNews.length > 1 ? (
+                    normalNews.length > 0 ? (
                         <div className="normal-section">
                             <SlideShow />
                         </div>

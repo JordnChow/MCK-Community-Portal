@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./homepage.css";
 import NewsImage from "../../assets/news.jpg";
-import SportImage from "../../assets/Cocurricular-Sport.jpg";
-import CanteenImage from "../../assets/canteeen.jpg"
-import achievementsImage from "../../assets/achievements.jpg"
-import { createClient } from '@supabase/supabase-js'
+import SportImage from "../../assets/Cocurricular-Sport.jpg"; 
+import CanteenImage from "../../assets/canteeen.jpg"; 
+import AchievementsImage from "../../assets/achievements.jpg"; 
+import { createClient } from '@supabase/supabase-js';
+import { useNavigate } from "react-router-dom";
 
 const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_KEY);
-
 
 export default function Homepage() {
     const [showPopup, setShowPopup] = useState(false);
@@ -63,14 +63,14 @@ export default function Homepage() {
                                 <Summary_Container
                                     title="News"
                                     information="Stay updated with the latest news and announcements."
-                                    url={NewsImage}
+                                    url={NewsImage} // Use imported image
                                 />
                             </td>
                             <td>
                                 <Summary_Container
                                     title="Sport"
                                     information="Explore the latest sports updates and events."
-                                    url={SportImage}
+                                    url={SportImage} // Use imported image
                                 />
                             </td>
                         </tr>
@@ -79,14 +79,14 @@ export default function Homepage() {
                                 <Summary_Container
                                     title="Canteen"
                                     information="Check out the canteen menu and updates."
-                                    url={CanteenImage}
+                                    url={CanteenImage} // Use imported image
                                 />
                             </td>
                             <td>
                                 <Summary_Container
                                     title="Achievements"
                                     information="Celebrate our community's achievements and milestones."
-                                    url={achievementsImage}
+                                    url={AchievementsImage} // Use imported image
                                 />
                             </td>
                         </tr>
@@ -124,12 +124,13 @@ export default function Homepage() {
 }
 
 function Summary_Container(props) {
+    const navigate = useNavigate()
     return (
         <div
             className="summary-container"
             style={{ backgroundImage: `url(${props.url})` }}
         >
-            <div className="summary-overlay">
+            <div className="summary-overlay" onClick={()=> navigate(`/${props.title}`)}>
                 <h1 className="summary-title">{props.title}</h1>
                 <p className="summary-info">{props.information || "Click to learn more!"}</p>
             </div>

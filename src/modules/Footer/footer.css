@@ -31,3 +31,22 @@
 .footer h4{
     margin: 10px 0 ;
 }
+
+body.high-contrast {
+    background-color: white !important;
+    color: black !important;
+}
+
+body.high-contrast * {
+    background-color: white !important;
+    color: black !important;
+    border-color: black !important; /* Ensures borders are also visible */
+}
+
+body.high-contrast a {
+    color: black !important;
+}
+
+body.high-contrast a:hover {
+    color: gray !important;
+}
